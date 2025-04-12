@@ -8,8 +8,7 @@ connectDB();
 
 // app.use(cors());
 app.use(cors({
-    origin: 'https://invoice-generator-ul3p.onrender.com', // Your frontend URL
-    origin:'https:/localhost:5173',
+    origin: ['https://invoice-generator-ul3p.onrender.com', 'https:/localhost:5173'], // Your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
