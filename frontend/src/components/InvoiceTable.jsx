@@ -68,9 +68,9 @@ function InvoiceTable({ invoices, setInvoices }) {
 
         doc.text(`Customer: ${invoice.customerName}`, 14, 30);
         doc.text(`Product: ${invoice.product}`, 14, 40);
-        doc.text(`Price: $${subtotal.toFixed(2)}`, 14, 50);
-        doc.text(`Tax (10%): $${tax.toFixed(2)}`, 14, 60);
-        doc.text(`Total: $${total.toFixed(2)}`, 14, 70);
+        doc.text(`Price: ₹${subtotal.toFixed(2)}`, 14, 50);
+        doc.text(`Tax (10%): ₹${tax.toFixed(2)}`, 14, 60);
+        doc.text(`Total: ₹${total.toFixed(2)}`, 14, 70);
 
         doc.save(`Invoice_${invoice.customerName}.pdf`);
     };
@@ -110,14 +110,14 @@ function InvoiceTable({ invoices, setInvoices }) {
                 />
                 <input
                     type="number"
-                    placeholder="💲 Min Price"
+                    placeholder="₹ Min Price"
                     value={minPrice}
                     onChange={(e) => setMinPrice(e.target.value)}
                     className="border p-2 w-full md:w-1/6 rounded-md bg-white text-gray-800"
                 />
                 <input
                     type="number"
-                    placeholder="💲 Max Price"
+                    placeholder="₹ Max Price"
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(e.target.value)}
                     className="border p-2 w-full md:w-1/6 rounded-md bg-white text-gray-800"

@@ -18,9 +18,9 @@ function InvoicePreview({ invoice }) {
             <div className="space-y-3">
                 <p className="text-lg"><strong>👤 Customer:</strong> {invoice.customerName}</p>
                 <p className="text-lg"><strong>📦 Product:</strong> {invoice.product}</p>
-                <p className="text-lg"><strong>💰 Price:</strong> ${subtotal.toFixed(2)}</p>
-                <p className="text-lg"><strong>🧾 Tax (10%):</strong> ${tax.toFixed(2)}</p>
-                <h3 className="text-xl font-bold mt-2">💵 Total: ${total.toFixed(2)}</h3>
+                <p className="text-lg"><strong>💰 Price:</strong> ₹{subtotal.toFixed(2)}</p>
+                <p className="text-lg"><strong>🧾 Tax (10%):</strong> ₹{tax.toFixed(2)}</p>
+                <h3 className="text-xl font-bold mt-2">💵 Total: ₹{total.toFixed(2)}</h3>
             </div>
 
             {/* Download PDF Button */}

@@ -24,7 +24,7 @@ function InvoiceDetail() {
             <h2 className="text-2xl font-bold mb-2">Invoice Details</h2>
             <p><strong>Customer:</strong> {invoice.customerName}</p>
             <p><strong>Product:</strong> {invoice.product}</p>
-            <p><strong>Price:</strong> ${invoice.price.toFixed(2)}</p>
+            <p><strong>Price:</strong> ₹{invoice.price.toFixed(2)}</p>
             <InvoicePDF invoice={invoice} />
         </div>
     );
