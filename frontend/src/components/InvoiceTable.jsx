@@ -3,6 +3,8 @@ import axios from "axios";
 import jsPDF from 'jspdf';
 import { useAuth } from "../contexts/AuthContext";
 import { toast } from 'react-toastify'
+const API_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 
 function InvoiceTable({ invoices, setInvoices }) {
@@ -19,7 +21,7 @@ function InvoiceTable({ invoices, setInvoices }) {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`/api/invoices/delete/${id}`,
+            await axios.delete(`${API_URL}/api/invoices/delete/${id}`,
                 {
                     headers: { Authorization: `Bearer ${token}` }
                 }
@@ -39,7 +41,7 @@ function InvoiceTable({ invoices, setInvoices }) {
         e.preventDefault();
         try {
             const response = await axios.put(
-                `/api/invoices/update/${editingInvoice._id}`,
+                `${API_URL}/api/invoices/update/${editingInvoice._id}`,
                 editingInvoice,
                 {
                     headers: { Authorization: `Bearer ${token}` }

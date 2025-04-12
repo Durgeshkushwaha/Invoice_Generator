@@ -3,6 +3,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../contexts/AuthContext';
+const API_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 
 function InvoiceForm({ addInvoice }) {
@@ -15,7 +17,7 @@ function InvoiceForm({ addInvoice }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/api/invoices/create", {
+            const response = await axios.post(`${API_URL}/api/invoices/create`, {
                 customerName,
                 product,
                 price,

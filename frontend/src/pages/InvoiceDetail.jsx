@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import InvoicePDF from "../components/InvoicePDF";
+const API_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 function InvoiceDetail() {
     const { id } = useParams();
     const [invoice, setInvoice] = useState(null);
 
     useEffect(() => {
-        axios.get(`/api/invoices/read/${id}`)
+        axios.get(`${API_URL}/api/invoices/read/${id}`)
             .then(response => setInvoice(response.data))
             .catch(error => console.error("Error fetching invoice:", error));
     }, [id]);

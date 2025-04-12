@@ -3,6 +3,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+const API_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 
 const SignUp = () => {
@@ -17,7 +19,7 @@ const SignUp = () => {
     console.log("Submitting:", { name, email, password }); // Log the data
 
     try {
-      const response = await axios.post("/api/signup/create", { name, email, password });
+      const response = await axios.post(`${API_URL}/api/signup/create`, { name, email, password });
       console.log("ress", response.data)
       if (response.data && response.data.user && response.data.token) {
         // Auto-login after successful signup

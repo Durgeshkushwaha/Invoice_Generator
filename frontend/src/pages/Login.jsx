@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify'
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 
 const Login = () => {
@@ -14,7 +15,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/api/login/create", { email, password })
+            const response = await axios.post(`${API_URL}/api/login/create`, { email, password })
             console.log("Response data", response.data);
             console.log("Full API response:", response);
 
