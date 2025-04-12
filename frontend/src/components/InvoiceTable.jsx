@@ -142,8 +142,8 @@ function InvoiceTable({ invoices, setInvoices }) {
                                 <tr key={invoice._id} className="border text-center hover:bg-gray-200 transition">
                                     <td className="border p-2">{invoice.customerName}</td>
                                     <td className="border p-2">{invoice.product}</td>
-                                    <td className="border p-2">${invoice.price.toFixed(2)}</td>
-                                    <td className="border p-2">${(invoice.price * 1.1).toFixed(2)}</td>
+                                    <td className="border p-2">₹{invoice.price.toFixed(2)}</td>
+                                    <td className="border p-2">₹{(invoice.price * 1.1).toFixed(2)}</td>
                                     <td className="border p-2 flex justify-center gap-2">
                                         <button className=" bg-green-500 text-white cursor-pointer py-2 px-4 rounded hover:bg-green-600" onClick={() => generatePDF(invoice)}>
                                             Download PDF
