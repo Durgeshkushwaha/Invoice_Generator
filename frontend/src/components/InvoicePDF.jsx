@@ -15,9 +15,9 @@ function InvoicePDF({ invoice }) {
 
         doc.text(`Customer: ${invoice.customerName}`, 14, 30);
         doc.text(`Product: ${invoice.product}`, 14, 40);
-        doc.text(`Price: ₹${subtotal.toFixed(2)}`, 14, 50);
-        doc.text(`Tax (10%): ₹${tax.toFixed(2)}`, 14, 60);
-        doc.text(`Total: ₹${total.toFixed(2)}`, 14, 70);
+        doc.text(`Price: Rs.${subtotal.toFixed(2)}`, 14, 50);
+        doc.text(`Tax (10%): Rs.${tax.toFixed(2)}`, 14, 60);
+        doc.text(`Total: Rs.${total.toFixed(2)}`, 14, 70);
 
         doc.save(`Invoice_${invoice.customerName}.pdf`);
     };
