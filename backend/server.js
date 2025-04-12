@@ -6,8 +6,10 @@ require('dotenv').config();
 const app = express();
 connectDB();
 
+// app.use(cors());
 app.use(cors({
     origin: 'https://invoice-generator-ul3p.onrender.com', // Your frontend URL
+    origin:'https:/localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true

@@ -16,7 +16,7 @@ import InvoiceDetail from "./pages/InvoiceDetail";
 function App() {
     return (
         <AuthProvider>
-            <BrowserRouter>
+            <BrowserRouter basename="/">
                 <div className="bg-radial-[at_25%_25%] from-sky-400 to-zinc-500 to-75% min-h-screen">
                     <Navbar />
                     <div className="container mx-auto p-4">
