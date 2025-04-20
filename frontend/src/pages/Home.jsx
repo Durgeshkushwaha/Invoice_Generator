@@ -32,8 +32,8 @@ function Home() {
     // };
     return (
         <div className="text-center mt-10">
-            <h1 className="text-3xl font-bold">Welcome to the Invoice Generator</h1>
-            <p className="mt-2 text-gray-900">Easily create and manage invoices.</p>
+            <h1 className="text-3xl font-bold text-white">Welcome to the Invoice Generator</h1>
+            <p className="mt-2 text-gray-400">Easily create and manage invoices.</p>
             <div className="space-x-4 mt-10">
                 <Link to="/invoices" className="hover:bg-blue-700  text-white   bg-blue-600 p-3 rounded-lg">Invoices</Link>
                 <Link to="/create-invoice" className="hover:bg-blue-700 text-white  bg-blue-600 p-3 rounded-lg">Create Invoice</Link>
