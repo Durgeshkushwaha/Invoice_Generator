@@ -15,19 +15,19 @@ function Navbar() {
                 <div className="flex space-x-4">
                     <Link
                         to="/home"
-                        className="px-4 py-2 rounded-md bg-slate-800 hover:bg-slate-700 text-white font-medium transition-colors shadow-sm"
+                        className="px-2 py-2 rounded-md bg-slate-800 hover:bg-slate-700 text-white font-medium transition-colors shadow-sm"
                     >
                         Home
                     </Link>
                     <Link
                         to="/signup"
-                        className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white font-medium transition-colors shadow-sm"
+                        className="px-2 py-2 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white font-medium transition-colors shadow-sm"
                     >
                         Sign Up
                     </Link>
                     <Link
                         to="/login"
-                        className="px-4 py-2 rounded-md bg-blue-900 hover:bg-blue-700 text-white font-medium transition-colors shadow-sm"
+                        className="px-2 py-2 rounded-md bg-blue-900 hover:bg-blue-700 text-white font-medium transition-colors shadow-sm"
                     >
                         Login
                     </Link>
