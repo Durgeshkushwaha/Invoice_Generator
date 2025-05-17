@@ -93,7 +93,8 @@ function InvoiceTable({ invoices, setInvoices }) {
     const totalPages = Math.ceil(filteredInvoices.length / invoicesPerPage);
     const indexOfLastInvoice = currentPage * invoicesPerPage;
     const indexOfFirstInvoice = indexOfLastInvoice - invoicesPerPage;
-    const currentInvoices = filteredInvoices.slice(indexOfFirstInvoice, indexOfLastInvoice);
+    let currentInvoices = filteredInvoices.slice(indexOfFirstInvoice, indexOfLastInvoice);
+    let reversecurrentInvoices = currentInvoices.reverse(); // to show latest added invoice at the top of the table
 
     return (
         <div className="mt-6 bg-gradient-to-br from-blue-600 to-purple-700 text-white p-6 rounded-lg shadow-lg">
@@ -137,8 +138,8 @@ function InvoiceTable({ invoices, setInvoices }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {currentInvoices.length > 0 ? (
-                            currentInvoices.map((invoice) => (
+                        {reversecurrentInvoices.length > 0 ? (
+                            reversecurrentInvoices.map((invoice) => (
                                 <tr key={invoice._id} className="border text-center hover:bg-gray-200 transition">
                                     <td className="border p-2">{invoice.customerName}</td>
                                     <td className="border p-2">{invoice.product}</td>
