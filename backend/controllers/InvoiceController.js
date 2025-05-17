@@ -3,21 +3,21 @@ const router = express.Router();
 const Invoice = require('../models/Invoice');
 
 
-    
+
 // Create an invoice
 createinvoice = async (req, res) => {
     try {
-        console.log("Decoded user:", req.user); // Should show { userId: "..." }
+
 
         const { customerName, product, price } = req.body;
-        
+
         const newInvoice = new Invoice({
             customerName,
             product,
             price,
             user: req.user.userId // ✅ use userId, not id
         });
-        
+
         await newInvoice.save();
         res.status(201).json(newInvoice);
     } catch (error) {
@@ -28,7 +28,7 @@ createinvoice = async (req, res) => {
 // Get all invoices (only user's invoices)
 readinvoice = async (req, res) => {
     try {
-        const invoices = await Invoice.find({ user: req.user.id }); // Filter by user ID
+        const invoices = await Invoice.find({ user: req.user.userId }); // Filter by user ID
         res.status(200).json(invoices);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -44,7 +44,7 @@ updateinvoice = async (req, res) => {
             return res.status(404).json({ message: "Invoice not found" });
         }
 
-        if (invoice.user.toString() !== req.user.id) {
+        if (invoice.user.toString() !== req.user.userId) {
             return res.status(403).json({ message: "Unauthorized: You cannot update this invoice" });
         }
 
@@ -71,7 +71,7 @@ deleteinvoice = async (req, res) => {
             return res.status(404).json({ message: "Invoice not found" });
         }
 
-        if (invoice.user.toString() !== req.user.id) {
+        if (invoice.user.toString() !== req.user.userId) {
             return res.status(403).json({ message: "Unauthorized: You cannot delete this invoice" });
         }
 
