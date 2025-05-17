@@ -16,20 +16,7 @@ function Home() {
         setTimeout(() => logout(), 1000); // Show toast first, then logout
         navigate('/login');
     }
-    // const handleLogout = async () => {
-    //     await toast.promise(
-    //         new Promise((resolve) => {
-    //             logout();
-    //             resolve();
-    //         }),
-    //         {
-    //             pending: 'Logging out...',
-    //             success: 'Logout Successfully! 👋',
-    //             error: 'Logout failed'
-    //         }
-    //     );
-    //     navigate('/login');
-    // };
+   
     return (
         <div className="text-center mt-10">
             <h1 className="text-3xl font-bold text-white">Welcome to the Invoice Generator</h1>

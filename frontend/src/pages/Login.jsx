@@ -15,7 +15,12 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${API_URL}/api/login/create`, { email, password })
+            const response = await axios.post(`${API_URL}/api/login/create`, { email, password }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                withCredentials: true, // Only if using cookies/auth
+            })
             console.log("Response data", response.data);
             console.log("Full API response:", response);
 
