@@ -14,8 +14,10 @@ function InvoiceForm({ addInvoice }) {
 
     const { token } = useAuth();
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Sending token:", token);
         try {
             const response = await axios.post(`${API_URL}/api/invoices/create`, {
                 customerName,
