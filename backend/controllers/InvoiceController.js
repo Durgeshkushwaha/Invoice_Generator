@@ -3,17 +3,21 @@ const router = express.Router();
 const Invoice = require('../models/Invoice');
 
 
-
+    
 // Create an invoice
 createinvoice = async (req, res) => {
     try {
+        console.log("Decoded user:", req.user); // Should show { userId: "..." }
+
         const { customerName, product, price } = req.body;
+        
         const newInvoice = new Invoice({
             customerName,
             product,
             price,
-            user: req.user.id // Attach logged-in user's ID
+            user: req.user.userId // ✅ use userId, not id
         });
+        
         await newInvoice.save();
         res.status(201).json(newInvoice);
     } catch (error) {
@@ -70,7 +74,7 @@ deleteinvoice = async (req, res) => {
         if (invoice.user.toString() !== req.user.id) {
             return res.status(403).json({ message: "Unauthorized: You cannot delete this invoice" });
         }
-        
+
         const deletedInvoice = await Invoice.findByIdAndDelete(req.params.id);
         if (!deletedInvoice) {
             return res.status(404).json({ message: "Invoice not found" });
