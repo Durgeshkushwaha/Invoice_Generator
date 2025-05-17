@@ -8,7 +8,12 @@ const Invoice = require('../models/Invoice');
 createinvoice = async (req, res) => {
     try {
         const { customerName, product, price } = req.body;
-        const newInvoice = new Invoice({ customerName, product, price });
+        const newInvoice = new Invoice({
+            customerName,
+            product,
+            price,
+            user: req.user.id // Attach logged-in user's ID
+        });
         await newInvoice.save();
         res.status(201).json(newInvoice);
     } catch (error) {
@@ -16,20 +21,29 @@ createinvoice = async (req, res) => {
     }
 };
 
-// Get all invoices
+// Get all invoices (only user's invoices)
 readinvoice = async (req, res) => {
     try {
-        const invoices = await Invoice.find();
+        const invoices = await Invoice.find({ user: req.user.id }); // Filter by user ID
         res.status(200).json(invoices);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-// Update Invoices
+// Update an invoice (only if user is the owner)
 updateinvoice = async (req, res) => {
     try {
         const { customerName, product, price } = req.body;
+        const invoice = await Invoice.findById(req.params.id);
+        if (!invoice) {
+            return res.status(404).json({ message: "Invoice not found" });
+        }
+
+        if (invoice.user.toString() !== req.user.id) {
+            return res.status(403).json({ message: "Unauthorized: You cannot update this invoice" });
+        }
+
         const updatedInvoice = await Invoice.findByIdAndUpdate(
             req.params.id,
             { customerName, product, price },
@@ -45,9 +59,18 @@ updateinvoice = async (req, res) => {
     }
 };
 
-// Delete an invoice
+// Delete an invoice (only if user is the owner)
 deleteinvoice = async (req, res) => {
     try {
+        const invoice = await Invoice.findById(req.params.id);
+        if (!invoice) {
+            return res.status(404).json({ message: "Invoice not found" });
+        }
+
+        if (invoice.user.toString() !== req.user.id) {
+            return res.status(403).json({ message: "Unauthorized: You cannot delete this invoice" });
+        }
+        
         const deletedInvoice = await Invoice.findByIdAndDelete(req.params.id);
         if (!deletedInvoice) {
             return res.status(404).json({ message: "Invoice not found" });

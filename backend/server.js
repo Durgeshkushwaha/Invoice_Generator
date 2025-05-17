@@ -7,11 +7,31 @@ const app = express();
 connectDB();
 
 // app.use(cors());
+// app.use(cors({
+//     origin: ['https://invoice-generator-ul3p.onrender.com', 'https://localhost:5173'], // Your frontend URL
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true
+// }));
+
+
+const allowedOrigins = [
+    'https://invoice-generator-ul3p.onrender.com', // Production frontend
+    'https://invoice-generator-backend-nvro.onrender.com', // Your actual backend URL
+    'http://localhost:5173' // Local development 
+];
+
 app.use(cors({
-    origin: ['https://invoice-generator-ul3p.onrender.com', 'https:/localhost:5173'], // Your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    credentials: true, // Must be true if frontend sends cookies/auth
 }));
 
 app.options('*', cors()); // Handle preflight requests

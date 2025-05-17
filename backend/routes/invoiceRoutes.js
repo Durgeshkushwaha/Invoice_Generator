@@ -9,7 +9,7 @@ const authenticateToken = require('../middleware/authMiddleware');
 router.post('/create', authenticateToken, createinvoice);
 
 // Get all invoices
-router.get('/read', readinvoice);
+router.get('/read',authenticateToken, readinvoice);
 
 // Update Invoices
 router.put("/update/:id", authenticateToken, updateinvoice);
