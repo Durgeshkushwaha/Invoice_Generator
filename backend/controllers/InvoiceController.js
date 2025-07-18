@@ -8,14 +8,14 @@ const Invoice = require('../models/Invoice');
 createinvoice = async (req, res) => {
     try {
 
-
+ 
         const { customerName, product, price } = req.body;
 
         const newInvoice = new Invoice({
             customerName,
             product,
             price,
-            user: req.user.userId // ✅ use userId, not id
+            user: req.user.userId // ✅ use userId
         });
 
         await newInvoice.save();
