@@ -20,19 +20,42 @@ function InvoiceTable({ invoices, setInvoices }) {
     const invoicesPerPage = 5; // Show 5 invoices per page
 
     const handleDelete = async (id) => {
-        try {
-            await axios.delete(`${API_URL}/api/invoices/delete/${id}`,
-                {
-                    headers: { Authorization: `Bearer ${token}` }
-                }
-            );
-            setInvoices(invoices.filter(invoice => invoice._id !== id));
-            toast.success("Invoice deleted successfully!")
-        } catch (error) {
-            console.error("Error deleting invoice:", error);
-        }
+        toast((t) => (
+            <span className="flex flex-col">
+                <p >Are you sure you want to delete this invoice?</p>
+                <div className="flex justify-end gap-2 mt-2">
+                    <button
+                        onClick={() => toast.dismiss(t.id)}
+                        className="px-3 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300 transition-colors"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        onClick={async () => {
+                            toast.dismiss(t.id);
+                            const deleteToast = toast.loading('Deleting invoice...', { position: 'top-center' });
+                            try {
+                                await axios.delete(`${API_URL}/api/invoices/delete/${id}`, {
+                                    headers: { Authorization: `Bearer ${token}` }
+                                });
+                                setInvoices(invoices.filter(invoice => invoice._id !== id));
+                                toast.success("Invoice deleted successfully!", { id: deleteToast });
+                            } catch (error) {
+                                console.error("Error deleting invoice:", error);
+                                toast.error("Failed to delete invoice", { id: deleteToast });
+                            }
+                        }}
+                        className="px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                    >
+                        Delete
+                    </button>
+                </div>
+            </span>
+        ), {
+            position: 'top-center',
+            duration: Infinity, // Makes it persistent until manually dismissed
+        });
     };
-
     const handleEditClick = (invoice) => {
         setEditingInvoice(invoice);
     };
