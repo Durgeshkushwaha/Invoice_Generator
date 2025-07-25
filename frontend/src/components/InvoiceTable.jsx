@@ -33,16 +33,16 @@ function InvoiceTable({ invoices, setInvoices }) {
                     <button
                         onClick={async () => {
                             toast.dismiss(t.id);
-                            const deleteToast = toast.loading('Deleting invoice...', { position: 'top-center' });
+
                             try {
                                 await axios.delete(`${API_URL}/api/invoices/delete/${id}`, {
                                     headers: { Authorization: `Bearer ${token}` }
                                 });
                                 setInvoices(invoices.filter(invoice => invoice._id !== id));
-                                toast.success("Invoice deleted successfully!", { id: deleteToast });
+                                toast.success("Invoice deleted successfully!");
                             } catch (error) {
                                 console.error("Error deleting invoice:", error);
-                                toast.error("Failed to delete invoice", { id: deleteToast });
+                                toast.error("Failed to delete invoice");
                             }
                         }}
                         className="px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
