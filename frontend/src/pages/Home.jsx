@@ -34,25 +34,25 @@ function Home() {
                     </button>
                 </div>
                 <nav className="flex flex-col space-y-4 p-4">
-                    <Link to="/" className="flex items-center hover:bg-blue-700 px-3 py-2 rounded-lg transition">
+                    <Link to="/" className="flex items-center hover:bg-blue-600 px-3 py-2 rounded-lg transition">
                         <FaHome className="mr-2" />
                         {isOpen && "Home"}
                     </Link>
-                    <Link to="/invoices" className="flex items-center hover:bg-blue-700 px-3 py-2 rounded-lg transition">
+                    <Link to="/invoices" className="flex items-center hover:bg-blue-600 px-3 py-2 rounded-lg transition">
                         <FaFileInvoiceDollar className="mr-2" />
                         {isOpen && "All Invoices"}
                     </Link>
-                    <Link to="/create-invoice" className="flex items-center hover:bg-blue-700 px-3 py-2 rounded-lg transition">
+                    <Link to="/create-invoice" className="flex items-center hover:bg-blue-600 px-3 py-2 rounded-lg transition">
                         <FaPlus className="mr-2" />
                         {isOpen && "Create Invoice"}
                     </Link>
-                    <Link to="/profile" className="flex items-center hover:bg-blue-700 px-3 py-2 rounded-lg transition">
+                    <Link to="/profile" className="flex items-center hover:bg-blue-600 px-3 py-2 rounded-lg transition">
                         <FaUser className="mr-2" />
                         {isOpen && "Profile"}
                     </Link>
                     <button
                         onClick={handleLogout}
-                        className="flex items-center hover:bg-red-600 px-3 py-2 rounded-lg transition"
+                        className="flex items-center hover:bg-red-600 px-3 py-2 rounded-lg transition cursor-pointer"
                     >
                         <FaSignOutAlt className="mr-2" />
                         {isOpen && "Logout"}
