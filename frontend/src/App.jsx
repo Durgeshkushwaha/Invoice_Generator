@@ -6,12 +6,13 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Navbar from "./components/Navbar";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 import InvoiceList from "./pages/InvoiceList";
 import CreateInvoice from "./pages/CreateInvoice";
 import Login from "./pages/Login"
 import SignUp from "./pages/SignUp";
 import InvoiceDetail from "./pages/InvoiceDetail";
+import SidebarLayout from "./layouts/SidebarLayout";
 
 function App() {
     return (
@@ -32,11 +33,13 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/signup" element={<SignUp />} />
 
-                            <Route element={<ProtectedRoute />}>
-                                <Route path="/home" element={<Home />} />
-                                <Route path="/invoices" element={<InvoiceList />} />
-                                <Route path="/create-invoice" element={<CreateInvoice />} />
-                                {/* <Route path="/invoice/:id" element={<InvoiceDetail />} /> */}
+                            <Route element={<SidebarLayout />}>
+                                <Route element={<ProtectedRoute />}>
+                                    <Route path="/dashboard" element={<Dashboard />} />
+                                    <Route path="/invoices" element={<InvoiceList />} />
+                                    <Route path="/create-invoice" element={<CreateInvoice />} />
+                                    {/* <Route path="/invoice/:id" element={<InvoiceDetail />} /> */}
+                                </Route>
                             </Route>
 
                             {/* Redirect any unknown paths to login */}
