@@ -27,7 +27,7 @@ const Login = () => {
             if (response.data && response.data.user && response.data.token) {
                 login(response.data.user, response.data.token);
                 toast.success("Login Successful!");
-                navigate('/home');
+                navigate('/dashboard');
             } else {
                 throw new Error("Invalid response from server");
             }

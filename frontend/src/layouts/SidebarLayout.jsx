@@ -35,7 +35,7 @@ function SidebarLayout() {
             <div className={`transition-all duration-300 ${isOpen ? "w-64" : "w-16"} bg-blue-800 text-white shadow-lg`}>
                 <div className="flex items-center justify-between p-4">
                     <span className="text-xl font-bold">{isOpen && "Invoice App"}</span>
-                    <button onClick={toggleSidebar} className="focus:outline-none text-white">
+                    <button onClick={toggleSidebar} className="focus:outline-none text-white cursor-pointer">
                         {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
                     </button>
                 </div>

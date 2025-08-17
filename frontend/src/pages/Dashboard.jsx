@@ -7,9 +7,9 @@ import { useAuth } from "../contexts/AuthContext";
 const Dashboard = () => {
     const { token } = useAuth();
     const [summary, setSummary] = useState({
-        totalInvoices: 0,
-        totalRevenue: 0,
-        totalCustomers: 0,
+        totalInvoices: 4013,
+        totalRevenue: 380000,
+        totalCustomers: 892,
         recentInvoices: [],
     });
 
@@ -34,8 +34,8 @@ const Dashboard = () => {
     }, [token]);
 
     return (
-        <div className="p-6">
-            <h1 className="text-2xl font-bold text-white mb-6">📊 Dashboard Overview</h1>
+        <div className="p-6 bg-cyan-300 rounded-lg">
+            <h1 className="text-2xl font-bold text-black mb-6">📊 Dashboard Overview</h1>
 
             {/* Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -57,7 +57,7 @@ const Dashboard = () => {
             </div>
 
             {/* Recent Invoices Table */}
-            <h2 className="text-xl font-semibold text-white mb-4">📅 Recent Invoices</h2>
+            <h2 className="text-xl font-semibold text-black mb-4">📅 Recent Invoices</h2>
             <div className="overflow-x-auto bg-gray-800 rounded-lg shadow">
                 <table className="min-w-full text-white">
                     <thead className="bg-gray-700">
