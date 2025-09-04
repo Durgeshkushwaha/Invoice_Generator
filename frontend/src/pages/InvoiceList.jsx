@@ -22,7 +22,7 @@ function InvoiceList() {
 
     return (
         <div>
-            <h2 className="text-2xl font-bold mb-4">All Invoices</h2>
+            {/* <h2 className="text-2xl font-bold mb-4 ">All Invoices</h2> */}
             <InvoiceTable invoices={invoices} setInvoices={setInvoices} />
         </div>
     );

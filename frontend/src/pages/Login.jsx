@@ -49,7 +49,7 @@ const Login = () => {
     return (
         <>
             <form onSubmit={handleSubmit}
-                className="bg-gradient-to-br from-indigo-900 to-slate-800 p-4 sm:p-6 md:p-8 w-full mx-auto max-w-[90vw] sm:max-w-md shadow-lg rounded-xl border border-slate-700/50"
+                className="bg-gradient-to-br from-indigo-900 to-slate-800 p-4 mt-4 sm:p-6 md:p-8 w-full mx-auto max-w-[90vw] sm:max-w-md shadow-lg rounded-xl border border-slate-700/50"
             >
                 {/* Header */}
                 <div className="text-center mb-6 sm:mb-8">

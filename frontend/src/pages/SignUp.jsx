@@ -46,7 +46,7 @@ const SignUp = () => {
   return (
     <>
       <form onSubmit={handleSubmit}
-        className="bg-gradient-to-br from-indigo-900 to-slate-800 p-8 w-full mx-auto max-w-md shadow-lg rounded-xl border border-slate-700/50"
+        className="bg-gradient-to-br from-indigo-900 to-slate-800 p-8 mt-4 w-full mx-auto max-w-md shadow-lg rounded-xl border border-slate-700/50"
       >
         <div className="text-center mb-8">
           <h2 className="text-3xl font-semibold text-white mb-2">Create Account</h2>

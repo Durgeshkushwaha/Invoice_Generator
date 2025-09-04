@@ -22,7 +22,7 @@ function App() {
                     background: 'radial-gradient(ellipse at center, rgba(13,27,42,0.95) 0%, rgba(5,12,20,1) 100%)'
                 }}>
                     <Navbar />
-                    <div className="container mx-auto p-4">
+                    <div className="container mx-auto">
                         <ToastContainer />
 
                         <Routes>

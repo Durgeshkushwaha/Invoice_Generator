@@ -34,7 +34,7 @@ const Dashboard = () => {
     }, [token]);
 
     return (
-        <div className="p-6 bg-cyan-300 rounded-lg">
+        <div className="p-14 m-4 bg-cyan-300 rounded-lg">
             <h1 className="text-2xl font-bold text-black mb-6">📊 Dashboard Overview</h1>
 
             {/* Summary Cards */}
